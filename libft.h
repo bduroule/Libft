@@ -112,5 +112,7 @@ void				ft_foreach(int *tab, int length, void (*f)(int));
 int					ft_factorial(int nb);
 int					ft_power(int nb, int power);
 int					ft_is_prime(int nb);
+void				ft_swap(int *a, int *b);
+int					*ft_range(int min, int max);
 
 #endif

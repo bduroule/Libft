@@ -45,7 +45,8 @@ SRC = ft_atoi.o			ft_strcmp.o		\
  	  ft_lstmap.o		ft_strrev.o		\
  	  ft_foreach.o		ft_factorial.o	\
  	  ft_power.o		ft_intsize.o	\
- 	  ft_is_prime.o	
+ 	  ft_is_prime.o		ft_swap.o		\
+ 	  ft_range.o
 
 all: $(NAME)
 
