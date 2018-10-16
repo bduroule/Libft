@@ -10,9 +10,12 @@
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
-
+RED = \e[31m
+GREEN = \e[92m
+END = \e[97m
 NAME = libft.a
-CPPFLAGS = -Wall -Werror -Wextra -Includes
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -Includes
 SRC = ft_atoi.o			ft_strcmp.o		\
  	  ft_strcpy.o		ft_strlen.o		\
  	  ft_strncmp.o		ft_strncpy.o	\
@@ -27,7 +30,7 @@ SRC = ft_atoi.o			ft_strcmp.o		\
  	  ft_isalnum.o		ft_isascii.o	\
  	  ft_isprint.o		ft_toupper.o	\
  	  ft_tolower.o		ft_strnstr.o	\
- 	  ft_putchar.o		ft_putstr.o\
+ 	  ft_putchar.o		ft_putstr.o		\
  	  ft_putnbr.o		ft_putendl.o	\
  	  ft_strclr.o		ft_striter.o	\
  	  ft_striteri.o		ft_memdel.o		\
@@ -39,7 +42,7 @@ SRC = ft_atoi.o			ft_strcmp.o		\
  	  ft_strnequ.o		ft_strsub.o		\
  	  ft_strjoin.o		ft_strtrim.o	\
  	  ft_strsplit.o		ft_intsize.o	\
- 	  ft_itoa.o			ft_lstnew.o\
+ 	  ft_itoa.o			ft_lstnew.o		\
  	  ft_lstdelone.o	ft_lstdel.o		\
  	  ft_lstadd.o		ft_lstiter.o	\
  	  ft_lstmap.o		ft_strrev.o		\
@@ -48,15 +51,32 @@ SRC = ft_atoi.o			ft_strcmp.o		\
  	  ft_is_prime.o		ft_swap.o		\
  	  ft_range.o
 
-all: $(NAME)
+
+all: $(NAME) | signature
 
 $(NAME): $(SRC)
-	ar rcs $(NAME) $(SRC) $?
+	@ar rcs $(NAME) $(SRC) $?
+	@printf "\n$(GREEN)[libft built]$(END)\n"
+
+%.o: %.c 
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(GREEN)#$(END)"
 
 clean: 
-	rm -f $(SRC)
+	@rm -f $(SRC)
+	@printf "$(RED)[remove obect]$(END)\n"
 
 fclean: clean
-	rm -f $(NAME) 
+	@rm -f $(NAME)
+	@printf "$(RED)[remouve libft]$(END)\n"
 
 re: fclean all
+
+signature:
+	@echo "  __          ________     _______      _______     ________  	"
+	@echo " /_/\        /_______/\  /_______/\   /_______/\  /_________/\ 	"
+	@echo " \:\ \       \__.::._\/  \::: _  \ \  \:::::_ \/  \___.::.__\/ 	" 
+	@echo "  \:\ \         \::\ \    \::(_)  \/_  \:\/___/\      \::\ \   	"
+	@echo "   \:\ \____    _\::\ \__  \::  _  \ \  \:::._\/       \::\ \  	"
+	@echo "    \:\/___/\  /__\::\__/\  \::(_)  \ \  \:\ \          \::\ \ 	"
+	@echo "     \_____\/  \________\/   \_______\/   \_\/           \__\/ 	"
